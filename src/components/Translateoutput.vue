@@ -1,6 +1,6 @@
 <template>
   <div>
-   <h2> {{translatedText}} hell</h2>
+   <h2> {{translatedText}} </h2>
   </div>
 </template>
 

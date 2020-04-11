@@ -1,9 +1,7 @@
-// prettier-ignore
 <template>
-  <div>
-    <h1>trans</h1>
+  <div class="container mt-5">
+    <h1 class="display-3 mt-5 mb-5">TRANSLATOR</h1>
 
-    <h3>made with love</h3>
     <TranslateForm v-on:formSubmit="translateText"></TranslateForm>
 
     <TranslateOutput v-text="translatedText"> </TranslateOutput>
@@ -42,3 +40,13 @@ export default {
   }
 };
 </script>
+
+<style>
+@import "../src/assets/css/bootstrap.css";
+
+body {
+  background-color: rgb(255, 255, 255);
+  /* background-image: url( '../src/assets/bg.jpg'); */
+  /* background-repeat: no-repeat; */
+}
+</style>
