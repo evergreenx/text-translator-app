@@ -1,32 +1,44 @@
+// prettier-ignore
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+  <div>
+    <h1>trans</h1>
+
+    <h3>made with love</h3>
+    <TranslateForm v-on:formSubmit="translateText"></TranslateForm>
+
+    <TranslateOutput v-text="translatedText"> </TranslateOutput>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import TranslateForm from "../src/components/TransltorForm";
+import TranslateOutput from "../src/components/Translateoutput";
 
-#nav {
-  padding: 30px;
-}
+export default {
+  data() {
+    return {
+      translatedText: ""
+    };
+  },
+  components: {
+    TranslateForm,
+    TranslateOutput
+  },
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+  methods: {
+    translateText(text, language) {
+      this.$http
+        .get(
+          "https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20200320T195012Z.dae8cd7773d67eaf.2a3d2702c626500bfca8586d659c54ce42d620cb&lang=" +
+            language +
+            "&text=" +
+            text
+        )
+        .then(res => {
+          console.log(res);
+          this.translatedText = res.body.text[0];
+        });
+    }
+  }
+};
+</script>
