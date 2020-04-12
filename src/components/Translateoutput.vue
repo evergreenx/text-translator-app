@@ -1,6 +1,6 @@
 <template>
-  <div>
-   <h2> {{translatedText}} </h2>
+  <div class="container">
+   <h2 class="display-3 bg-info">{{translatedText}} </h2>
   </div>
 </template>
 

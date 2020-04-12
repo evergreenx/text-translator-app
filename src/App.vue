@@ -1,10 +1,11 @@
 <template>
   <div class="container mt-5">
-    <h1 class="display-3 mt-5 mb-5">TRANSLATOR</h1>
+    <h1 class="mt-5 mb-5 text-center">TRANSLATOR</h1>
 
     <TranslateForm v-on:formSubmit="translateText"></TranslateForm>
 
-    <TranslateOutput v-text="translatedText"> </TranslateOutput>
+    <TranslateOutput v-text="translatedText" class="display-3 text-center">
+    </TranslateOutput>
   </div>
 </template>
 
@@ -33,7 +34,6 @@ export default {
             text
         )
         .then(res => {
-          console.log(res);
           this.translatedText = res.body.text[0];
         });
     }
@@ -48,5 +48,9 @@ body {
   background-color: rgb(255, 255, 255);
   /* background-image: url( '../src/assets/bg.jpg'); */
   /* background-repeat: no-repeat; */
+}
+
+h1{
+  font-weight:bolder;
 }
 </style>
